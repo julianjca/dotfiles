@@ -7,6 +7,11 @@ DEFAULT_USER=$USER
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export EDITOR=vim
+
+# krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -18,8 +23,12 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 # NVM Stuff
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
+
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 #Yarn
 export PATH="$PATH:$(yarn global bin)"
@@ -27,13 +36,24 @@ export PATH="$PATH:$(yarn global bin)"
 # MySQL
 export PATH=${PATH}:/usr/local/mysql/bin
 
+# https://stackoverflow.com/a/57217841
 # Go
-export GOPATH="${HOME}/workspace/go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-test -d "${GOPATH}" || mkdir "${GOPATH}"
-test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+# export GOPATH=$HOME/go
+# export GOROOT="$(brew --prefix golang)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# export GOPATH="${HOME}/workspace/go"
+# export GOROOT="$(brew --prefix golang)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# test -d "${GOPATH}" || mkdir "${GOPATH}"
+# test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOROOT/bin
 
+# Ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -97,6 +117,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  rbenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -130,8 +151,36 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias personalweb="cd ~/Documents/Projects/software_engineering/new-juliancanderson && code . && yarn dev"
+alias jcpro_fe="cd ~/jumpcut/jumpcut-pro-frontend && code . && yarn local"
+alias jcpro_be="cd ~/jumpcut/jumpcut-pro-server && npm run dev"
+alias run_uploads_folder="cd ~/jumpcut/jumpcut-pro-server/uploads && http-server"
+alias run_redis_kafka="docker start jumpcut_redis && docker start jumpcut_kafka"
+alias zk="cd ~/Dropbox/2\ -\ Areas/Notes"
+alias projects="cd ~/Documents/1_projects/"
+alias areas="cd ~/Documents/2_areas/"
+alias resources="cd ~/Documents/3_resources/"
+alias archives="cd ~/Documents/4_archives/"
+
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/juliancanderson/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/juliancanderson/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/juliancanderson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/juliancanderson/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+#### FIG ENV VARIABLES ####
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+
+PATH="$PATH:$HOME/Library/Python/3.7/bin"
