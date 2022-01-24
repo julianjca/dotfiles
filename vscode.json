@@ -1,4 +1,3 @@
-// Most of the settings are from https://github.com/wesbos/dotfiles/blob/master/vscode.js
 {
   "workbench.colorTheme": "One Dark Pro Flat",
   "editor.fontFamily": "Dank Mono, Monaco, 'Courier New', monospace",
