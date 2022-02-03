@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -11,6 +16,9 @@ export EDITOR=vim
 
 # krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -51,6 +59,7 @@ export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
@@ -161,6 +170,19 @@ alias projects="cd ~/Documents/1_projects/"
 alias areas="cd ~/Documents/2_areas/"
 alias resources="cd ~/Documents/3_resources/"
 alias archives="cd ~/Documents/4_archives/"
+alias redeploy_tdol="curl -X POST -d {} https://api.netlify.com/build_hooks/5eacfee56d3a2d9455e11c83"
+alias cc="cd ~/creatives-club"
+alias bear="cd ~/bear-script && sudo python3 bear_export_sync.py --out ~/Dropbox/Notes/Zettelkasten --backup ~/Dropbox/Notes/Backup"
+alias bear-bl="sudo note-link-janitor ~/Dropbox/Notes/Zettelkasten"
+alias bear-chown="sudo chown -R juliancanderson ~/Dropbox/Notes"
+alias xdt="cd ~/xendit"
+alias source-zsh="source ~/.zshrc"
+alias k="kubectl"
+alias lc="cd ~/latecheckout"
+alias run_go_test="go test -v ./..."
+alias run-sqs="AWS_DEFAULT_REGION=ap-southeast-2 aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name cashpay_cash-payment-service_queue_development_dev"
+alias run-sns="AWS_DEFAULT_REGION=ap-southeast-2 aws --endpoint-url=http://localhost:4566 sqs create-topic --name cashpay_cash-payment-service_queue_development_dev"
+alias activate-cairo="source ~/cairo_venv/bin/activate"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
@@ -184,3 +206,7 @@ if [ -f '/Users/juliancanderson/google-cloud-sdk/completion.zsh.inc' ]; then . '
 
 
 PATH="$PATH:$HOME/Library/Python/3.7/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$PATH:/Users/juliancanderson/.foundry/bin"
