@@ -1,8 +1,9 @@
+// Most of the settings are from https://github.com/wesbos/dotfiles/blob/master/vscode.js
 {
-  "workbench.colorTheme": "One Dark Pro Flat",
-  "editor.fontFamily": "Dank Mono, Monaco, 'Courier New', monospace",
+  "workbench.colorTheme": "One Hunter Theme",
+  "editor.fontFamily": "Berkeley Mono,Martian Mono, Dank Mono, Fira Code, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "Operator Mono, Inconsolata for Powerline",
+  "terminal.integrated.fontFamily": "Berkeley Mono, Martian Mono, Operator Mono, Inconsolata for Powerline",
   "editor.lineHeight": 22,
   "editor.quickSuggestionsDelay": 30,
   "editor.letterSpacing": 0.5,
@@ -16,14 +17,15 @@
   //     "editor.formatOnSave": true
   // },
   // tell the ESLint plugin to run on save
-  "eslint.codeActionsOnSave": true,
+  // "eslint.codeActionsOnSave": true,
   "workbench.iconTheme": "material-icon-theme",
   "editor.scrollBeyondLastLine": true,
   "editor.useTabStops": true,
   "editor.formatOnPaste": false,
-  "editor.fontSize": 13,
   "terminal.integrated.rendererType": "dom",
   "editor.tabSize": 2,
+  "terminal.integrated.fontSize": 11,
+  "terminal.integrated.lineHeight": 1.3,
   "editor.cursorStyle": "line",
   "editor.wordWrap": "on",
   "editor.multiCursorModifier": "ctrlCmd",
@@ -31,23 +33,48 @@
   "editor.cursorBlinking": "solid",
   "editor.colorDecorators": false,
   "editor.minimap.enabled": false,
-  "workbench.activityBar.visible": true,
   "workbench.sideBar.location": "left",
   "editor.renderWhitespace": "none",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    // "source.fixAll.eslint": true
   },
   // "javascript.implicitProjectConfig.experimentalDecorators": true,
   "workbench.startupEditor": "newUntitledFile",
   "extensions.ignoreRecommendations": false,
   "sync.gist": "11a2235ac3a51158d3ab491e75d471f8",
-  "bracketPairColorizer.depreciation-notice": false,
   "solidity.compileUsingRemoteVersion": "v0.8.11+commit.d7f03943",
   "solidity.enableLocalNodeCompiler": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
   "solidity.defaultCompiler": "localNodeModule",
-  "editor.formatOnSaveTimeout": 1500
+  "editor.formatOnSaveTimeout": 1500,
+  "security.workspace.trust.untrustedFiles": "open",
+  "solidity.packageDefaultDependenciesContractsDirectory": "src",
+  "solidity.packageDefaultDependenciesDirectory": "lib",
+  "json.maxItemsComputed": 100000,
+  "editor.fontSize": 12,
+  "npm.keybindingsChangedWarningShown": true,
+  "jest.autoRun": {
+    "onStartup": []
+  },
+  "editor.inlineSuggest.enabled": true,
+  "css.lint.unknownAtRules": "ignore",
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity"
+  },
+  "solidity.telemetry": true,
+  "rust-analyzer.check.command": "clippy",
+  "update.showReleaseNotes": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  }
 }
